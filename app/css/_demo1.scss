@@ -1,0 +1,17 @@
+/* --------------------------------------------------
+  3.0 Demo 1
+-------------------------------------------------- */
+
+@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+.demo1 {
+  @include push--auto;
+  @include animation('slide-down 5s 3');
+  width: 80%;
+  background: $dark;
+  color: $white;
+  font-size: $heading-base-size;
+   @include font-size(32px, 50px);
+}

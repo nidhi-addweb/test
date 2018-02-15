@@ -1,0 +1,354 @@
+# Default application configuration that all configurations inherit from.
+
+scss_files: "**/*.scss"
+
+exclude: 
+  - '../**/_variable.css'
+  - '../**/abstractions/_variable.scss'
+  - '../**/thirdparty/owl-carousel/*.css'
+  - '../**/animate.css'
+  - '../**/magic.css'
+  - '../**/owl.carousel.css'
+  - '../**/_mixins.scss'
+  - '../**/bootstrap/*.scss'
+
+linters:
+  BangFormat:
+    enabled: true
+    space_before_bang: true
+    space_after_bang: false
+
+  BorderZero:
+    enabled: true
+    convention: none # or `zero`
+
+  ColorKeyword:
+    enabled: false
+
+  ColorVariable:
+    enabled: false
+
+  Comment:
+    enabled: false
+
+  DebugStatement:
+    enabled: true
+
+  DeclarationOrder:
+    enabled: false
+
+  DuplicateProperty:
+    exclude:
+      - '../**/_variable.scss'
+    enabled: true
+
+  ElsePlacement:
+    enabled: true
+    style: same_line # or 'new_line'
+
+  EmptyLineBetweenBlocks:
+    enabled: false
+    ignore_single_line_blocks: true
+
+  EmptyRule:
+    enabled: true
+
+  FinalNewline:
+    enabled: true
+    present: true
+
+  HexLength:
+    enabled: true
+    style: short # or 'long'
+
+  HexNotation:
+    enabled: true
+    style: uppercase # or 'lowercase'
+
+  HexValidation:
+    enabled: true
+
+  IdSelector:
+    enabled: false
+
+  ImportantRule:
+    enabled: false
+
+  ImportPath:
+    enabled: true
+    leading_underscore: false
+    filename_extension: false
+
+  Indentation:
+    enabled: true
+    allow_non_nested_indentation: false
+    exclude:
+      - '../**/_variable.scss'
+    character: space # or 'tab'
+    width: 2
+
+  LeadingZero:
+    enabled: true
+    style: exclude_zero # or 'include_zero'
+
+  MergeableSelector:
+    enabled: false
+    force_nesting: true
+
+  NameFormat:
+    enabled: true
+    allow_leading_underscore: true
+    convention: hyphenated_lowercase # or 'BEM', or a regex pattern
+
+  NestingDepth:
+    enabled: true
+    max_depth: 15
+
+  PlaceholderInExtend:
+    enabled: false
+
+  PropertyCount:
+    enabled: false
+    include_nested: false
+    max_properties: 10
+
+  PropertySortOrder:
+    enabled: true
+    order:
+      - position
+      - float
+      - clear
+      - top
+      - right
+      - bottom
+      - left
+      - direction
+      - z-index
+      - display
+      - max-height
+      - min-height
+      - height
+      - max-width
+      - min-width
+      - width
+      - margin
+      - margin-top
+      - margin-right
+      - margin-bottom
+      - margin-left
+      - margin-collapse
+      - margin-top-collapse
+      - margin-right-collapse
+      - margin-bottom-collapse
+      - margin-left-collapse
+      - padding
+      - padding-top
+      - padding-right
+      - padding-bottom
+      - padding-left
+      - overflow
+      - overflow-x
+      - overflow-y
+      - clip
+      - clear
+      - border
+      - border-collapse
+      - border-top
+      - border-right
+      - border-bottom
+      - border-left
+      - border-color
+      - border-image
+      - border-top-color
+      - border-right-color
+      - border-bottom-color
+      - border-left-color
+      - border-spacing
+      - border-style
+      - border-top-style
+      - border-right-style
+      - border-bottom-style
+      - border-left-style
+      - border-width
+      - border-top-width
+      - border-right-width
+      - border-bottom-width
+      - border-left-width
+      - border-radius
+      - border-top-right-radius
+      - border-bottom-right-radius
+      - border-bottom-left-radius
+      - border-top-left-radius
+      - border-radius-topright
+      - border-radius-bottomright
+      - border-radius-bottomleft
+      - border-radius-topleft
+      - background
+      - background-attachment
+      - background-color
+      - background-image
+      - background-position
+      - background-repeat
+      - background-size
+      - color
+      - font
+      - font-size
+      - line-height
+      - font-smoothing
+      - osx-font-smoothing
+      - font-style
+      - font-weight
+      - font-family
+      - hyphens
+      - src
+      - letter-spacing
+      - word-spacing
+      - text-align
+      - text-decoration
+      - text-indent
+      - text-overflow
+      - text-rendering
+      - text-size-adjust
+      - text-shadow
+      - text-transform
+      - word-break
+      - word-wrap
+      - white-space
+      - vertical-align
+      - list-style
+      - list-style-type
+      - list-style-position
+      - list-style-image
+      - pointer-events
+      - cursor
+      - content
+      - opacity
+      - visibility
+      - quotes
+      - outline
+      - outline-offset
+      - size
+      - zoom
+      - transform
+      - box-align
+      - box-flex
+      - box-orient
+      - box-pack
+      - box-shadow
+      - box-sizing
+      - table-layout
+      - animation
+      - animation-delay
+      - animation-duration
+      - animation-iteration-count
+      - animation-name
+      - animation-play-state
+      - animation-timing-function
+      - animation-fill-mode
+      - transition
+      - transition-delay
+      - transition-duration
+      - transition-property
+      - transition-timing-function
+      - background-clip
+      - backface-visibility
+      - resize
+      - appearance
+      - user-select
+      - interpolation-mode
+      - direction
+      - marks
+      - page
+      - set-link-source
+      - unicode-bidi
+      - speak
+      - filter
+    ignore_unspecified: false
+    separate_groups: false
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
+
+  QualifyingElement:
+    enabled: false
+    allow_element_with_attribute: true
+    allow_element_with_class: true
+    allow_element_with_id: false
+
+  SelectorDepth:
+    enabled: true
+    max_depth: 15
+
+  SelectorFormat:
+    enabled: false
+    convention: hyphenated_lowercase # or 'BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+
+  Shorthand:
+    enabled: true
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: true
+
+  SingleLinePerSelector:
+    enabled: true
+
+  SpaceAfterComma:
+    enabled: true
+
+  SpaceAfterPropertyColon:
+    enabled: true
+    exclude:
+      - '../**/_variable.scss'
+    style: one_space # or 'no_space', or 'at_least_one_space', or 'aligned'
+
+  SpaceAfterPropertyName:
+    enabled: true
+
+  SpaceBeforeBrace:
+    enabled: true
+    style: space # or 'new_line'
+    allow_single_line_padding: false
+
+  SpaceBetweenParens:
+    enabled: true
+    spaces: 0
+
+  StringQuotes:
+    enabled: true
+    style: single_quotes # or double_quotes
+
+  TrailingSemicolon:
+    enabled: true
+
+  TrailingZero:
+    enabled: false
+
+  UnnecessaryMantissa:
+    enabled: true
+
+  UnnecessaryParentReference:
+    enabled: true
+
+  UrlFormat:
+    enabled: true
+
+  UrlQuotes:
+    enabled: true
+
+  VariableForProperty:
+    enabled: false
+    properties: []
+
+  VendorPrefix:
+    enabled: false
+    identifier_list: base
+    include: []
+    exclude: []
+
+  ZeroUnit:
+    enabled: true
+
+  Compass::*:
+    enabled: false
