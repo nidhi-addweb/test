@@ -1,0 +1,13 @@
+/* --------------------------------------------------
+  3.0 Demo 1
+-------------------------------------------------- */
+
+.button {
+  @include button($button-size: 'normal', $button-type: 'normal', $button-radius: 'normal', $button-border: 'normal');
+}
+
+.icon-btn {
+  @include button-icon(icon-download);
+}
+
+

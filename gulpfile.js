@@ -108,6 +108,7 @@ gulp.task('html', function() {
     return gulp.src(paths.src + '*.html')
         .pipe(replace('<% header %>', fs.readFileSync(paths.src + paths.templates + 'header.html')))
         .pipe(replace('<% footer %>', fs.readFileSync(paths.src + paths.templates + 'footer.html')))
+        .pipe(replace('<% buttons %>', fs.readFileSync(paths.src + paths.templates + 'button.html')))
 		.pipe(gulp.dest(paths.dist))
 })
 
