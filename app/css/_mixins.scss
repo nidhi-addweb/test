@@ -1,4 +1,4 @@
-/* --------------------------------------------------
+/*--------------------------------------------------
   2.0 Mixins
 
   * Font-Face
@@ -147,14 +147,14 @@ textarea {
 
 /* MediaQueries */
 $breakpoints: (
-  "phone":        400px,
+  "phone":        320px,
   "phone-wide":   480px,
   "phablet":      560px,
   "tablet-small": 640px,
   "tablet":       768px,
   "tablet-wide":  1024px,
-  "desktop":      1248px,
-  "desktop-wide": 1440px
+  "desktop":      1200px,
+  "desktop-wide": 1366px
 );
 @mixin mq($width, $type: min) {
   @if map_has_key($breakpoints, $width) {
@@ -181,21 +181,21 @@ $breakpoints: (
 
 /* Keyframes and animation */
 @mixin keyframes($animation-name) {
-    @-webkit-keyframes #{$animation-name} {
-        @content;
-    }
-    @-moz-keyframes #{$animation-name} {
-        @content;
-    }
-    @-ms-keyframes #{$animation-name} {
-        @content;
-    }
-    @-o-keyframes #{$animation-name} {
-        @content;
-    }
-    @keyframes #{$animation-name} {
-        @content;
-    }
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
 }
 
 @mixin animation($str) {
@@ -221,39 +221,320 @@ $breakpoints: (
 }
 */
 
-/* Transitions */
-@mixin transition($args...) {
-  -webkit-transition: $args;
-  -moz-transition: $args;
-  -ms-transition: $args;
-  -o-transition: $args;
-  transition: $args;
+
+@mixin css3-prefix($property, $value) {
+  -webkit-#{$property}: #{$value};
+   -khtml-#{$property}: #{$value};
+     -moz-#{$property}: #{$value};
+      -ms-#{$property}: #{$value};
+       -o-#{$property}: #{$value};
+          #{$property}: #{$value};
 }
 /* USAGE =====
-.class-name {
-  color: gray;
-  @include transition(color .3s ease);
-  &:hover {
-    color: black;
+  @include css3-prefix (border-radius: $value);
+*/
+
+
+@mixin flex-wrap($value: nowrap) {
+  -webkit-flex-wrap: $value;
+     -moz-flex-wrap: $value;
+  @if $value == nowrap {
+    -ms-flex-wrap: none;
+  } @else { 
+    -ms-flex-wrap: $value; 
+  }
+  flex-wrap: $value;
+}
+/* USAGE =====
+  @include flex-wrap(wrap);
+*/
+
+
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  }
+  @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  }
+  @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  }
+  @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+     -moz-flex-direction: $value;
+      -ms-flex-direction: $value;
+          flex-direction: $value;
+}
+/* USAGE =====
+  @include flex-direction($args...);
+*/
+
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  }
+  @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  }
+  @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  }
+  @else if $value == space-around {
+    -ms-flex-pack: distribute;    
+  }
+  @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+     -moz-justify-content: $value;
+          justify-content: $value;
+}
+/* USAGE =====
+  @include justify-content($args...);
+*/
+
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  }
+  @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  }
+  @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+     -moz-align-items: $value;
+          align-items: $value;
+}
+
+@mixin align-self($value: auto) {
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  }
+  @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  }
+  @else {
+    -ms-flex-item-align: $value;
+  }
+  align-self: $value;
+}
+
+@mixin align-content($value: stretch) {
+  -webkit-align-content: $value;
+  -moz-align-content: $value;
+  @if $value == flex-start {
+    -ms-flex-line-pack: start;
+  }
+  @else if $value == flex-end {
+    -ms-flex-line-pack: end;
+  }
+  @else {
+    -ms-flex-line-pack: $value;
+  }
+  align-content: $value;
+}
+
+
+@mixin tooltiparrow($size:5px, $direction:left, $color: transparent) {
+  border-width: $size;
+  border-color: $color;
+  border-style: solid;
+  display: inline-block;
+  height: 0;
+  width: 0;
+
+  @if $direction == "right" {
+    border-left-color: blue;
+    border-right-width: 0;
+  }
+  @else if $direction == "left" {
+    border-right-color: blue;
+    border-left-width: 0;
+  }
+  @else if $direction == "up" {
+    border-bottom-color: blue;
+    border-top-width: 0;
+  }
+  @else if $direction == "down" {
+    border-top-color: blue;
+    border-bottom-width: 0;
   }
 }
-*/
-
-/* Transform */
-@mixin transform($args...) {
-  -webkit-transform: $args;
-  -moz-transform: $args;
-  -ms-transform: $args;
-  -o-transform: $args;
-  transform: $args;
-}
 /* USAGE =====
-same as * Transitions
+.class {
+  @include tooltiparrow(5px, up, transparent);
+}
 */
 
 
 
+// Button mixin
+@mixin button($button-size: '', $button-type: '', $button-radius: '', $button-border: '') {
+  // Standard Button Styles
+  display: inline-block;
+  padding: 10px 30px 8px;
+  border: 2px solid $button-color;
+  background-color: $black;
+  color: $button-color;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  @include css3-prefix(border-radius, 0);
+  @include css3-prefix(transition, .3s ease-in-out);
+  // Button Hover Styles
+  &:hover {
+    border-color: $black;
+    color: $white;
+  }
 
 
+  // Button Size (small or normal (or no value) )
+  @if $button-size == small {
+    font-size: 12px;
+    padding: 6px 15px;
+  } 
+  @else {
+    &.button-small {
+      font-size: 12px;
+      padding: 6px 15px;
+    }
+  }
+
+  // Button border radius
+  @if $button-radius == btn-rounded {
+    @include css3-prefix(border-radius, 8px);
+  } 
+  @else {
+    &.btn-rounded {
+      @include css3-prefix(border-radius, 8px);
+    }
+  }
+
+  // Button Fill
+  @if $button-type == solid {
+    background-color: $button-bg-color;
+    color: $light;
+    &:hover {
+      border-color: $dark;
+      background-color: $dark;
+      color: $light;
+    }
+  } 
+  @else {
+    &.button-solid {
+      background-color: $button-bg-color;
+      color: $white;
+      &:hover {
+        border-color: $black;
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+
+  // Button Border
+  @if $button-border == bordered {
+    border-color: $black;
+    background-color: transparent;
+    color: $black;
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+  } 
+  @else {
+    &.button-bordered {
+      border-color: $black;
+      background-color: transparent;
+      color: $black;
+      &:hover {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+}
+
+/* USAGE =====
+  .button {
+    @include button(small, btn-rounded, normal, bordered);
+  }
+*/
+
+// Button icon mixin
+@mixin button-icon($icon: '') {
+  &:before {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    background-image: url('../images/icon.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    vertical-align: middle;
+    content:'';
+  }
+  @if $icon == icon-lock {
+    &:before {
+      background-image: url('../images/locked.svg');
+    }
+  }
+  @else if {
+    &.icon-lock {
+      &:before {
+        background-image: url('../images/locked.svg');
+      }
+    }
+  }
+  @if $icon == icon-user {
+    &:before {
+      background-image: url('../images/man-user.svg');
+    }
+  }
+  @else if {
+    &.icon-user {
+      &:before {
+        background-image: url('../images/man-user.svg');
+      }
+    }
+  }
+  @if $icon == icon-download {
+    &:before {
+      background-image: url('../images/download-button.svg');
+    }
+  }
+  @else if {
+    &.icon-download {
+      &:before {
+        background-image: url('../images/download-button.svg');
+      }
+    }
+  }
+}
 
 
+// Grid Mixin
+@mixin grid($column: '') {
+  float: left;
+}

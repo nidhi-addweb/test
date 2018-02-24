@@ -11,3 +11,12 @@
 @function px2em($px) {
   @return ($px / $base-font-size) * 1em;
 }
+
+@function my-calculation-function($base-value, $another-number) {
+  @return $base-value + $another-number;
+}
+/* USAGE =====
+.class-name {
+  padding: my-calculation-function($basic-spacing, 5px);
+}
+*/
