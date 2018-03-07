@@ -535,6 +535,21 @@ $breakpoints: (
 
 
 // Grid Mixin
-@mixin grid($column: '') {
+@mixin grid1($column: '') {
   float: left;
+  display: inline-block;
+  margin-right: 20px;
+  @if $column == col-2 {
+    @include calc('width', '50% - $value');
+  }
+}
+
+$mright: 20px;
+
+@mixin grid($target, $context){
+  width: (($target/$context)*100% - ($mright/2);
+}
+
+.grid {
+  @include grid(2, 100);
 }
