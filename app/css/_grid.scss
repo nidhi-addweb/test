@@ -1,0 +1,28 @@
+/*
+* Grid design
+*/
+
+.grid {
+  display: inline-block;
+  width: 100%;
+}
+.cols-2 {
+  .col {
+    @include grid($column: 'col-2');
+  }
+}
+.cols-3 {
+  .col {
+    @include grid($column: 'col-3');
+  }
+}
+.cols-4 {
+  .col {
+    @include grid($column: 'col-4');
+  }
+}
+.cols-5 {
+  .col {
+    @include grid($column: 'col-5');
+  }
+}

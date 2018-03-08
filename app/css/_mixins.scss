@@ -535,21 +535,58 @@ $breakpoints: (
 
 
 // Grid Mixin
-@mixin grid1($column: '') {
+@mixin calc($property, $expression) { 
+  #{$property}: -webkit-calc(#{$expression}); 
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: calc(#{$expression}); 
+}
+
+$value: 20px;
+
+// Grid Mixin
+@mixin grid($column: '') {
   float: left;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: $value;
   @if $column == col-2 {
-    @include calc('width', '50% - $value');
+    @include calc('width', '50% - #{$value/2}');
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+    &:nth-child(2n+1) {
+      clear: left
+    }
+  }
+  @else if $column == col-3 {
+    @include calc('width', '33.33% - #{$value*2/3}');
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+    &:nth-child(3n+1) {
+      clear: left
+    }
+  }
+  @else if $column == col-4 {
+    @include calc('width', '25% - #{$value*3/4}');
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+    &:nth-child(4n+1) {
+      clear: left
+    }
+  }
+  @else if $column == col-5 {
+    @include calc('width', '20% - #{$value*4/5}');
+    &:nth-child(5n) {
+      margin-right: 0;
+    }
+    &:nth-child(5n+1) {
+      clear: left
+    }
   }
 }
-
-$mright: 20px;
-
-@mixin grid($target, $context){
-  width: (($target/$context)*100% - ($mright/2);
-}
-
-.grid {
-  @include grid(2, 100);
-}
+/* USAGE =====
+  .cols-2 {
+    @include grid($column: 'col-2');
+  }
+*/
