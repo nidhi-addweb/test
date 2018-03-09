@@ -110,6 +110,7 @@ gulp.task('html', function() {
         .pipe(replace('<% footer %>', fs.readFileSync(paths.src + paths.templates + 'footer.html')))
         .pipe(replace('<% buttons %>', fs.readFileSync(paths.src + paths.templates + 'button.html')))
         .pipe(replace('<% grid %>', fs.readFileSync(paths.src + paths.templates + 'grid.html')))
+        .pipe(replace('<% card %>', fs.readFileSync(paths.src + paths.templates + 'card.html')))
 		.pipe(gulp.dest(paths.dist))
 })
 

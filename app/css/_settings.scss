@@ -83,20 +83,19 @@ $input-border-color-focused: $gray;
 
 /* ---- Navigation ---- */
 $navbar-higth: 75px;
-$navbar-background: #FFF;
+$navbar-background: $white;
 $navbar-border-color: $light;
 $nav-links-font-size: .8em;
-$nav-links-font-weight: 400;
 $nav-links-letter-spacing: 2px;
 $nav-links-color: $gray-light;
 $nav-links-color-hover: $dark;
 $nav-link-active-color: $dark;
+
+
 // Dropdown
-$dropdown-padding: 20px 0 10px 0;
-$dropdown-background: rgba(255, 255, 255, .93);
+$dropdown-padding: 20px 0 10px;
+$dropdown-background: rgba($white, .93);
 $dropdown-link-padding: 11px 40px 11px 25px;
-$dropdown-link-letter-spacing: .5px;
-$dropdown-link-line-height: .8em;
 $dropdown-link-left-border: 3px solid $dark; // don`t change the 3px;
 $dropdown-link-background: rgba(17, 17, 17, .05);
 $dropdown-link-shift: 35px; // no shift on 25px;
@@ -105,23 +104,11 @@ $dropdown-header-font-size: .8em;
 $dropdown-header-font: $heading-font;
 $dropdown-header-color: $dark;
 $dropdown-divider-color: #DDD;
-$bg-solid-white: #FFF;
-$bg-solid-black: #111;
 
 
 /* ---- Footer ---- */
 $footer-bg: #E3E3E3;
+$footer-color: #111;
 $footer-copyright-bg: #222;
 $footer-hr-color: #999;
-
-/* ---- Other ---- */
-$hr-color: #CCC;
-$name: 'animate';
-
-/* ---- Media Queries Breakpoints ---- */
-$screen-xs: 600px;
-$screen-sm: 770px;
-$screen-md: 992px;
-$screen-lg: 1260px;
-$screen-xlg: 1440px;
 
